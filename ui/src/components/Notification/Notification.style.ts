@@ -2,7 +2,8 @@ import styled from 'styled-components'
 import NotificationType from '../../types/notification-type'
 
 export const NotificationWrapper = styled.div<{
-	type: NotificationType
+	type: NotificationType,
+	isClosing: boolean
 }>`
 	background-color: ${props =>
 		props.type === 'positive'
@@ -17,7 +18,7 @@ export const NotificationWrapper = styled.div<{
 	position: fixed;
 	left: 10px;
 	bottom: 10px;
-	animation: appear 0.2s ease-in-out;
+	animation: ${props => props.isClosing ? 'appear .5s reverse running infinite' : 'appear 0.5s ease-in-out'};
 
 	@keyframes appear {
 		0% {
