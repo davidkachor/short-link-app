@@ -17,7 +17,7 @@ const CopyLinkButton: React.FC<{ text: string }> = props => {
 			<CopyButton onClick={clickHandler}>{props.text}</CopyButton>
 			{notificationIsShow && (
 				<Notification
-					isClosing={isGoingToClose}
+					isGoingToClose={isGoingToClose}
 					text={'URL was copied to your clipboard'}
 					type={'positive'}
 				/>

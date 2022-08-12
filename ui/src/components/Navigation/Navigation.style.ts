@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import { ButtonLink } from '../Button/Button.style'
+import { NavLink } from 'react-router-dom'
 
 export const NavigationStyled = styled.nav`
 	display: flex;
@@ -12,7 +13,7 @@ export const LinkContainer = styled.div`
 	gap: 32px;
 `
 
-export const ValidateLink = styled.a`
+export const ValidateLink = styled(NavLink)`
 	font-style: normal;
 	font-weight: 400;
 	font-size: 16px;
@@ -21,6 +22,10 @@ export const ValidateLink = styled.a`
 
 	&:hover {
 		text-decoration: underline;
+	}
+	
+	&.active {
+		display: none;
 	}
 `
 

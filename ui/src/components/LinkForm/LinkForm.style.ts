@@ -9,7 +9,7 @@ export const Form = styled.form`
 `
 
 export const Input = styled.input.attrs({
-	placeholder: 'http://type-your-link.here ...',
+	placeholder: 'https://type-your-link.here ...',
 	type: 'text',
 	'aria-label': 'link input',
 	'aria-description': 'type here link you want to make short',

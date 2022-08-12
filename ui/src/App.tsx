@@ -1,7 +1,8 @@
 import React from 'react'
+import { BrowserRouter as Router } from 'react-router-dom'
+import RouteList from './routes/RouteList'
 import Navigation from './components/Navigation/Navigation'
 import styled from 'styled-components'
-import Home from './pages/Home/Home'
 
 const Container = styled.div`
 	display: flex;
@@ -12,8 +13,10 @@ const Container = styled.div`
 function App() {
 	return (
 		<Container>
-			<Navigation />
-			<Home />
+			<Router>
+				<Navigation />
+				<RouteList />
+			</Router>
 		</Container>
 	)
 }

@@ -19,6 +19,8 @@ export const NotificationWrapper = styled.div<{
 	left: 10px;
 	bottom: 10px;
 	animation: ${props => props.isClosing ? 'appear .5s reverse running infinite' : 'appear 0.5s ease-in-out'};
+	max-width: 400px;
+	
 
 	@keyframes appear {
 		0% {
