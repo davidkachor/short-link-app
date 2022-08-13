@@ -11,6 +11,10 @@ export const LinkContainer = styled.div`
 	display: flex;
 	align-items: center;
 	gap: 32px;
+
+	@media (max-width: 768px) {
+		gap: 10px;
+	}
 `
 
 export const ValidateLink = styled(NavLink)`
@@ -19,6 +23,7 @@ export const ValidateLink = styled(NavLink)`
 	font-size: 16px;
 	line-height: 19px;
 	color: #515151;
+	text-align: center;
 
 	&:hover {
 		text-decoration: underline;
@@ -40,5 +45,9 @@ export const DocsLink = styled(ButtonLink).attrs({
 
 	&:hover {
 		background: #fccf35;
+	}
+
+	@media (max-width: 768px) {
+		padding: 15px;
 	}
 `

@@ -19,4 +19,8 @@ export const TextWrapper = styled.div`
 			font-size: 30px;
 		}
 	}
+
+	@media (max-width: 420px) {
+		width: 200px;
+	}
 `

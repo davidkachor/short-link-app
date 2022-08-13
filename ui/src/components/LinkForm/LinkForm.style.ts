@@ -6,6 +6,10 @@ export const Form = styled.form`
 	flex-direction: column;
 	gap: 36px;
 	align-items: center;
+
+	@media (max-width: 768px) {
+		width: 100%;
+	}
 `
 
 export const Input = styled.input.attrs<{ isValid: boolean }>(props => ({
@@ -29,6 +33,10 @@ export const Input = styled.input.attrs<{ isValid: boolean }>(props => ({
 
 	&::placeholder {
 		color: #aaaaaa;
+	}
+	
+	@media (max-width: 460px) {
+		width: calc(100% - 32px);
 	}
 `
 

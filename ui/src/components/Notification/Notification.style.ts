@@ -31,4 +31,8 @@ export const NotificationWrapper = styled.div<{
 			opacity: 1;
 		}
 	}
+	
+	@media (max-width: 300px) {
+		width: calc(100% - 20px);
+	}
 `

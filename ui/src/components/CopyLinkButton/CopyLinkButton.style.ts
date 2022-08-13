@@ -2,12 +2,10 @@ import styled from 'styled-components'
 
 export const CopyButton = styled.button.attrs({
 	'aria-label': 'Copy your short link',
-})<{
-	isClicked?: boolean
-}>`
+})`
 	padding: 24px;
 	width: 420px;
-	height: 95px;
+	//height: 95px;
 	background: #f6fbf8;
 	box-shadow: 0 24px 24px rgba(0, 0, 0, 0.08);
 	backdrop-filter: blur(4px);
@@ -22,10 +20,17 @@ export const CopyButton = styled.button.attrs({
 	transition: all 0.2s ease-in-out;
 	outline: transparent 20px solid;
 	overflow: hidden;
+	overflow-wrap: normal;
 	text-overflow: ellipsis;
 
 	&:hover {
-		//background-color: #ecefed;
 		outline: rgba(196, 196, 196, 0.84) 4px solid;
 	}
+
+	@media (max-width: 460px) {
+		width: calc(100% - 20px);
+		font-size: 20px;
+		
+	}
 `
+

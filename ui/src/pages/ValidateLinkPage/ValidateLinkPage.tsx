@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { PageWrapper, HeaderStyled } from './ValidateLinkPage.style'
 import LinkForm, {
 	ShortFormSubmitHandler,
@@ -6,7 +6,10 @@ import LinkForm, {
 import CopyLinkButton from '../../components/CopyLinkButton/CopyLinkButton'
 
 const ValidateLinkPage = () => {
+	const [isSubmitted, setIsSubmitted] = useState(false)
+
 	const submitHandler: ShortFormSubmitHandler = value => {
+		setIsSubmitted(true)
 		console.log(value)
 	}
 
@@ -16,7 +19,9 @@ const ValidateLinkPage = () => {
 				Validate a <span>short</span> link to get the original one 💪
 			</HeaderStyled>
 			<LinkForm buttonTitle="Validate me!" onSubmit={submitHandler} />
-			<CopyLinkButton text={'Example text'} />
+			{isSubmitted && (
+				<CopyLinkButton text={'https://www.youtube.com/watch?v=dQw4w9WgXcQ'} />
+			)}
 		</PageWrapper>
 	)
 }

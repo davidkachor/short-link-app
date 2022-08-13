@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { MainWrapper, Header } from './Home.style'
 import LinkForm, {
 	ShortFormSubmitHandler,
@@ -6,8 +6,10 @@ import LinkForm, {
 import CopyLinkButton from '../../components/CopyLinkButton/CopyLinkButton'
 
 const Home = () => {
+	const [isSubmitted, setIsSubmitted] = useState(false)
 	const submitHandler: ShortFormSubmitHandler = value => {
 		console.log(value)
+		setIsSubmitted(true)
 	}
 
 	return (
@@ -16,7 +18,9 @@ const Home = () => {
 				Get the <span>short</span> link as you go 👋
 			</Header>
 			<LinkForm buttonTitle="Short me!" onSubmit={submitHandler} />
-			<CopyLinkButton text={'Example text'} />
+			{isSubmitted && (
+				<CopyLinkButton text={'https://www.youtube.com/watch?v=dQw4w9WgXcQ'} />
+			)}
 		</MainWrapper>
 	)
 }

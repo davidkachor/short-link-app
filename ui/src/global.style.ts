@@ -18,6 +18,11 @@ export default createGlobalStyle`
     padding: 18px;
     height: calc(100vh - 36px);
     position: relative;
+    
+    @media (max-width: 768px) {
+      padding: 10px;
+      
+    }
 
     //&:before {
     //  content: '';
@@ -44,6 +49,10 @@ export default createGlobalStyle`
 
   #root {
     height: 100%;
+    width: 100%;
   }
 
+  #notification-root {
+    width: 100%;
+  }
 `
