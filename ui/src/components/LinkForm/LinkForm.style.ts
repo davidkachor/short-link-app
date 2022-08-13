@@ -8,19 +8,22 @@ export const Form = styled.form`
 	align-items: center;
 `
 
-export const Input = styled.input.attrs({
+export const Input = styled.input.attrs<{ isValid: boolean }>(props => ({
 	placeholder: 'https://type-your-link.here ...',
 	type: 'text',
-	'aria-label': 'link input',
-	'aria-description': 'type here link you want to make short',
-})`
+	'aria-label': props.isValid ? 'link input' : 'the url is not valid',
+	'aria-description': props.isValid
+		? 'type here link you want to make short'
+		: 'please write valid url',
+}))<{ isValid: boolean }>`
 	padding: 16px;
 	font-style: normal;
 	font-weight: 500;
 	font-size: 16px;
 	line-height: 19px;
-	background: #f9faff;
-	border: 1px solid #dee6ff;
+	background: ${props => (props.isValid ? '#f9faff' : '#ffdbdb')};
+	border: 1px solid ${props => (props.isValid ? '#dee6ff' : '#ff4d4d')};
+	${props => !props.isValid && 'outline: 3px solid red !important;'}
 	border-radius: 5px;
 	width: calc(420px - 32px);
 

@@ -6,15 +6,19 @@ export default createGlobalStyle`
     padding: 0;
     border: none;
     text-decoration: none;
+
+    &:focus {
+      outline: 3px #7e7e7e solid;
+    }
   }
-  
+
   body {
     background: #F5F5F5;
     font-family: Inter, sans-serif;
     padding: 18px;
     height: calc(100vh - 36px);
     position: relative;
-    
+
     //&:before {
     //  content: '';
     //  position: absolute;
@@ -37,9 +41,9 @@ export default createGlobalStyle`
     //  background: radial-gradient(50% 50% at 50% 50%, #FAB7B8 0%, rgba(246, 251, 248, 0) 100%);
     //}
   }
-  
+
   #root {
     height: 100%;
   }
-  
+
 `
