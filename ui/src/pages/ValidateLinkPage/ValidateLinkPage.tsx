@@ -8,23 +8,16 @@ import apiGetOriginal from '../../api/api-get-original'
 import getHash from '../../helpers/get-hash'
 import trimUrl from '../../helpers/trim-url'
 import useNotification from '../../hooks/useNotification'
-import Notification from '../../components/Notification/Notification'
 
 const ValidateLinkPage = () => {
 	const [url, setUrl] = useState('')
-	const [error, setError] = useState('')
 	const [isSubmitted, setIsSubmitted] = useState(false)
-	const { notificationIsShow, showNotification, isGoingToClose } =
-		useNotification(400)
+	const { Notification, showNotification } = useNotification(4000, 'negative')
 
 	const submitHandler: ShortFormSubmitHandler = async value => {
 		const data = await apiGetOriginal(getHash(value))
-		console.log('handler')
-
 		if ('error' in data) {
-			console.log('has error')
-			setError(data.error)
-			showNotification()
+			showNotification(data.error)
 		} else {
 			if ('original' in data) setUrl(trimUrl(data.original))
 			setIsSubmitted(true)
@@ -38,13 +31,7 @@ const ValidateLinkPage = () => {
 			</HeaderStyled>
 			<LinkForm buttonTitle="Validate me!" onSubmit={submitHandler} />
 			{isSubmitted && <CopyLinkButton text={url} />}
-			{notificationIsShow && (
-				<Notification
-					text={error}
-					type={'negative'}
-					isGoingToClose={isGoingToClose}
-				/>
-			)}
+			<Notification />
 		</PageWrapper>
 	)
 }

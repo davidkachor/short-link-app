@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import { Form, Input, SubmitButton } from './LinkForm.style'
 import isUrlValid from '../../helpers/is-url-valid'
 import useNotification from '../../hooks/useNotification'
-import Notification from '../Notification/Notification'
 
 export type ShortFormSubmitHandler = (value: string) => void
 
@@ -12,8 +11,7 @@ const LinkForm: React.FC<{
 }> = props => {
 	const [value, setValue] = useState('')
 	const [isValid, setIsValid] = useState(true)
-	const { notificationIsShow, isGoingToClose, showNotification } =
-		useNotification(4000)
+	const { Notification, showNotification } = useNotification(4000, 'negative')
 
 	const inputChangeHandler: React.ChangeEventHandler<
 		HTMLInputElement
@@ -27,9 +25,10 @@ const LinkForm: React.FC<{
 		if (isUrlValid(value.trim())) {
 			props.onSubmit?.(value.trim())
 			setValue('')
+			setIsValid(true)
 		} else {
 			setIsValid(false)
-			showNotification()
+			showNotification('Input URL is not valid')
 		}
 	}
 
@@ -37,13 +36,7 @@ const LinkForm: React.FC<{
 		<Form onSubmit={submitHandler}>
 			<Input isValid={isValid} value={value} onChange={inputChangeHandler} />
 			<SubmitButton>{props.buttonTitle}</SubmitButton>
-			{notificationIsShow && (
-				<Notification
-					text={'Input URL is not valid'}
-					type={'negative'}
-					isGoingToClose={isGoingToClose}
-				/>
-			)}
+			<Notification />
 		</Form>
 	)
 }

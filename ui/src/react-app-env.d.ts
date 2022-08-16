@@ -4,7 +4,14 @@ export {}
 
 declare global {
 	interface Window {
-		notificationIsGoingToCloseTimeout: NodeJS.Timeout
-		notificationClosingTimeout: NodeJS.Timeout
+		onCloseCallback: {
+			id: string | null
+			cb: (() => void) | null
+		}
+		notificationPull: {
+			id: string
+			notificationIsGoingToCloseTimeout?: NodeJS.Timeout
+			notificationClosingTimeout?: NodeJS.Timeout
+		}[]
 	}
 }

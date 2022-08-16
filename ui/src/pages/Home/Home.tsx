@@ -7,20 +7,16 @@ import CopyLinkButton from '../../components/CopyLinkButton/CopyLinkButton'
 import apiPostLink from '../../api/api-post-link'
 import trimUrl from '../../helpers/trim-url'
 import useNotification from '../../hooks/useNotification'
-import Notification from '../../components/Notification/Notification'
 
 const Home = () => {
 	const [isSubmitted, setIsSubmitted] = useState(false)
 	const [url, setUrl] = useState('')
-	const [error, setError] = useState('')
-	const { notificationIsShow, isGoingToClose, showNotification } =
-		useNotification(400)
+	const { Notification, showNotification } = useNotification(4000, 'negative')
 
 	const submitHandler: ShortFormSubmitHandler = async value => {
 		const data = await apiPostLink(value)
 		if ('error' in data) {
-			setError(data.error)
-			showNotification()
+			showNotification(data.error)
 		} else {
 			if ('short' in data) setUrl(trimUrl(data.short))
 			setIsSubmitted(true)
@@ -34,13 +30,7 @@ const Home = () => {
 			</Header>
 			<LinkForm buttonTitle="Short me!" onSubmit={submitHandler} />
 			{isSubmitted && <CopyLinkButton text={url} />}
-			{notificationIsShow && (
-				<Notification
-					text={error}
-					type={'negative'}
-					isGoingToClose={isGoingToClose}
-				/>
-			)}
+			<Notification />
 		</MainWrapper>
 	)
 }
