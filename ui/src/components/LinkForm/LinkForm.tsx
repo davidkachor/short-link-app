@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import { Form, Input, SubmitButton } from './LinkForm.style'
-import urlValidation from '../../helpers/url-validation'
+import isUrlValid from '../../helpers/is-url-valid'
 import useNotification from '../../hooks/useNotification'
 import Notification from '../Notification/Notification'
 
-export type ShortFormSubmitHandler = (value?: string) => void
+export type ShortFormSubmitHandler = (value: string) => void
 
 const LinkForm: React.FC<{
 	onSubmit?: ShortFormSubmitHandler
@@ -24,8 +24,8 @@ const LinkForm: React.FC<{
 
 	const submitHandler: React.FormEventHandler = event => {
 		event.preventDefault()
-		if (urlValidation(value)) {
-			props.onSubmit?.(value)
+		if (isUrlValid(value.trim())) {
+			props.onSubmit?.(value.trim())
 			setValue('')
 		} else {
 			setIsValid(false)
