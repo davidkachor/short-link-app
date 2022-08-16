@@ -19,7 +19,7 @@ const useNotification = (delay = 500, type: NotificationType = 'neutral') => {
 
 		if (!notificationIsShow || !item) return
 
-		window.onCloseCallback.cb?.()
+		window.onCloseCallback?.cb?.()
 
 		const cb = () => {
 			setIsGoingToClose(true)
