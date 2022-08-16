@@ -5,7 +5,6 @@ export const CopyButton = styled.button.attrs({
 })`
 	padding: 24px;
 	width: 420px;
-	//height: 95px;
 	background: #f6fbf8;
 	box-shadow: 0 24px 24px rgba(0, 0, 0, 0.08);
 	backdrop-filter: blur(4px);

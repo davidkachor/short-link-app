@@ -8,6 +8,7 @@ export interface TypedRequestBody<T> extends e.Request {
 }
 
 export function addLink(req: TypedRequestBody<{url?: string}>, res: e.Response) {
+    console.log(req.body)
     if (req.body.url) {
         if (linkModel.find(e => e.original === req.body.url)) {
             return res.status(200).json(linkModel.find(e => e.original === req.body.url))

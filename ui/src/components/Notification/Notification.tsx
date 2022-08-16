@@ -8,6 +8,8 @@ const Notification: React.FC<{
 	type: NotificationType
 	isGoingToClose: boolean
 }> = props => {
+	console.log('notification')
+
 	return ReactDOM.createPortal(
 		<NotificationWrapper isClosing={props.isGoingToClose} type={props.type}>
 			{props.text}
