@@ -1,7 +1,7 @@
 import e from 'express'
 import shortid from 'shortid'
 
-import Link from '@models/link.model'
+import Link from '@models/Link.model'
 import isUrlValid from '../helpers/is-url-valid'
 import StatusCodeError from '../helpers/errors/StatusCodeError'
 

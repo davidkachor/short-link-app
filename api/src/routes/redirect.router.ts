@@ -1,5 +1,5 @@
 import express from 'express'
-import Link from '@models/link.model'
+import Link from '@models/Link.model'
 
 const redirectRouter = express.Router()
 
