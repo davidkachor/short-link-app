@@ -2,6 +2,7 @@ import e from 'express'
 import shortid from 'shortid'
 
 import Link from '@models/link.model'
+import isUrlValid from '../helpers/is-url-valid'
 
 export interface TypedRequestBody<T> extends e.Request {
 	body: T
@@ -19,6 +20,8 @@ export async function createLink(
 			return res
 				.status(400)
 				.json({ error: "Invalid request. Write valid body with key 'url'" })
+		if (!isUrlValid(url))
+			return res.status(400).json({ error: 'Url is invalid' })
 
 		const linkItem = await Link.findOne({ where: { original: url } })
 
@@ -29,8 +32,9 @@ export async function createLink(
 
 		if (!origin) return res.status(500).json({ error: 'Something went wrong' })
 
-		const link = `${origin}/${hash}`
-		const newItem = { hash, original: url, short: link }
+		const short = `${origin}/${hash}`
+		const newItem = { hash, original: url, short }
+
 		await Link.create(newItem)
 		const fullItem = await Link.findOne({ where: { hash } })
 		res.status(201).json(fullItem)
