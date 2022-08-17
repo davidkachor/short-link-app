@@ -17,7 +17,7 @@ const PORT = process.env.PORT || 5000
 const server = express()
 
 server.use(cors())
-server.use('/links', linkRouter)
+server.use('/api/links', linkRouter)
 server.use('/', redirectRouter)
 
 server.listen(PORT, () => console.log(`Server works on port ${PORT}`))

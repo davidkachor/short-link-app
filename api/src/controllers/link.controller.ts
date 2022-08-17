@@ -3,6 +3,7 @@ import shortid from 'shortid'
 
 import Link from '@models/link.model'
 import isUrlValid from '../helpers/is-url-valid'
+import StatusCodeError from '../helpers/errors/StatusCodeError'
 
 export interface TypedRequestBody<T> extends e.Request {
 	body: T
@@ -16,30 +17,34 @@ export async function createLink(
 ) {
 	try {
 		const { url } = req.body
+		// if request body invalid return error
 		if (!url)
-			return res
-				.status(400)
-				.json({ error: "Invalid request. Write valid body with key 'url'" })
-		if (!isUrlValid(url))
-			return res.status(400).json({ error: 'Url is invalid' })
-
+			throw new StatusCodeError(
+				400,
+				"Invalid request. Write valid body with key 'url'"
+			)
+		// if link invalid return error
+		if (!isUrlValid(url)) throw new StatusCodeError(400, 'Your url is invalid')
+		// if this link already shortened, return its item
 		const linkItem = await Link.findOne({ where: { original: url } })
-
 		if (linkItem) return res.status(200).json(linkItem)
 
+		// create link and add it to database
 		const hash = shortid.generate()
 		const origin = req.get('host')
 
-		if (!origin) return res.status(500).json({ error: 'Something went wrong' })
+		if (!origin) throw new StatusCodeError(500, 'Something went wrong')
 
 		const short = `${origin}/${hash}`
 		const newItem = { hash, original: url, short }
-
 		await Link.create(newItem)
-		const fullItem = await Link.findOne({ where: { hash } })
-		res.status(201).json(fullItem)
+		//return added item
+		const addedItem = await Link.findOne({ where: { hash } })
+		res.status(201).json(addedItem)
 	} catch (error) {
-		res.status(500).json({ error: String(error) })
+		if (error instanceof StatusCodeError) {
+			res.status(error.statusCode).json({ error: error.message })
+		} else res.status(500).json({ error: String(error) })
 	}
 }
 
@@ -57,10 +62,12 @@ export async function readLinkItem(req: e.Request, res: e.Response) {
 		const { hash } = req.params
 		const item = await Link.findOne({ where: { hash } })
 
-		if (!item) return res.status(404).json({ error: "This link doesn't exist" })
+		if (!item) throw new StatusCodeError(404, "This link doesn't exist")
 
 		res.status(200).json(item)
 	} catch (error) {
-		res.status(500).json({ error: String(error) })
+		if (error instanceof StatusCodeError) {
+			res.status(error.statusCode).json({ error: error.message })
+		} else res.status(500).json({ error: String(error) })
 	}
 }

@@ -1,5 +1,9 @@
-import express from "express";
-import {readLinkItem,readLinkList,createLink} from '../controllers/link.controller'
+import express from 'express'
+import {
+	readLinkItem,
+	readLinkList,
+	createLink,
+} from '../controllers/link.controller'
 
 const linkRouter = express.Router()
 
