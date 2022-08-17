@@ -1,18 +1,19 @@
-import express from "express";
-import linkModel from "@models/link.model";
+import express from 'express'
+import Link from '@models/link.model'
 
 const redirectRouter = express.Router()
 
-redirectRouter.get('/:hash', (req, res) => {
-    const {hash} = req.params
-    const item = linkModel.find(e => e.hash === hash)
+// eslint-disable-next-line @typescript-eslint/no-misused-promises
+redirectRouter.get('/:hash', async (req, res) => {
+	try {
+		const { hash } = req.params
+		const item = await Link.findOne({ where: { hash } })
 
-    if (item) {
-        res.redirect(item.original)
-    } else {
-        res.redirect('/')
-    }
-
+		if (!item || !item.original) return res.status(301).redirect('/')
+		res.status(301).redirect(item.original)
+	} catch (error) {
+		res.status(500).json({ error: String(error) })
+	}
 })
 
 export default redirectRouter

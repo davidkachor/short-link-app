@@ -1,10 +1,28 @@
-export interface LinkItem {
-    hash: string;
-    original: string;
-    short: string;
+import { Model, DataTypes } from 'sequelize'
+import sequelize from '../config/sequelize'
+
+class Link extends Model {
+	hash?: string
+	original?: string
+	short?: string
 }
 
-const LinkModel: LinkItem[] = []
+Link.init(
+	{
+		hash: {
+			type: DataTypes.STRING,
+			allowNull: false,
+		},
+		original: {
+			type: DataTypes.STRING,
+			allowNull: false,
+		},
+		short: {
+			type: DataTypes.STRING,
+			allowNull: false,
+		},
+	},
+	{ sequelize, modelName: 'Links' }
+)
 
-export default LinkModel
-
+export default Link

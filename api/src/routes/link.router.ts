@@ -1,11 +1,11 @@
 import express from "express";
-import {showLinkItem,showLinkList,addLink} from '../controllers/link.controller'
+import {readLinkItem,readLinkList,createLink} from '../controllers/link.controller'
 
 const linkRouter = express.Router()
 
 linkRouter.use(express.json())
-linkRouter.get('/', showLinkList)
-linkRouter.post('/', addLink)
-linkRouter.get('/:hash', showLinkItem)
+linkRouter.get('/', readLinkList)
+linkRouter.post('/', createLink)
+linkRouter.get('/:hash', readLinkItem)
 
 export default linkRouter
