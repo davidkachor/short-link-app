@@ -30,7 +30,7 @@ const DocsRouteList = () => {
 				path="/links"
 				element={
 					<React.Suspense>
-						<LinkData />
+						<LinkData originURL={'http://localhost:5000'}/>
 					</React.Suspense>
 				}
 			/>

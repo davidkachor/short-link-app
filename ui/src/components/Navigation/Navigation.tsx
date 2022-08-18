@@ -13,7 +13,6 @@ const Navigation = () => {
 			<Logo />
 			<LinkContainer>
 				<ValidateLink to="/validate">Validate link</ValidateLink>
-				<ValidateLink to="/">Shortify link</ValidateLink>
 				<DocsLink to="/docs">docs</DocsLink>
 			</LinkContainer>
 		</NavigationStyled>

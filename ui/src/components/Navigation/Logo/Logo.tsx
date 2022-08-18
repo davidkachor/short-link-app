@@ -1,7 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
+import {Link} from 'react-router-dom'
 
-const Header = styled.h1`
+const Header = styled(Link)`
 	display: flex;
 	align-items: center;
 	font-weight: 700;
@@ -9,6 +10,7 @@ const Header = styled.h1`
 	line-height: 29px;
 	font-style: normal;
 	position: relative;
+	color: black;
 
 	&:before {
 		content: '';
@@ -26,7 +28,7 @@ const Header = styled.h1`
 `
 
 const Logo = () => {
-	return <Header>asd.link®</Header>
+	return <Header to='/'>asd.link®</Header>
 }
 
 export default Logo

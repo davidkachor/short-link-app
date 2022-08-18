@@ -2,10 +2,21 @@ import styled from 'styled-components'
 
 export const DocsPage = styled.article`
 	padding-left: 30px;
-	border-left: grey 1px solid;
-	width: 597px;
+	width: 500px;
+	//margin: 0 auto;
 
-	h1 {
+	@media (max-width: 800px) {
+		width: 400px;
+	}
+	@media (max-width: 600px) {
+		width: 300px;
+	}
+  @media (max-width: 500px) {
+  padding: 0;
+    width: calc(100vw - 40px);
+  }
+
+    h1 {
 		font-size: 40px;
 		margin-bottom: 10px;
 	}
@@ -17,7 +28,7 @@ export const DocsPage = styled.article`
 
 	p {
 		margin: 10px 0;
-      line-height: 22px;
+		line-height: 22px;
 	}
 
 	code {
@@ -31,6 +42,7 @@ export const DocsPage = styled.article`
 
 		p {
 			margin: 0;
+            overflow-wrap: break-word;
 		}
 		span {
 			p {

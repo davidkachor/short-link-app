@@ -6,6 +6,7 @@ const ValidateLinkPage = React.lazy(
 	() => import('../pages/ValidateLinkPage/ValidateLinkPage')
 )
 const Docs = React.lazy(() => import('../pages/Docs/Docs'))
+const Explorer = React.lazy(() => import('../pages/Explorer/Explorer'))
 const NotFound404 = React.lazy(() => import('../pages/NotFound404/NotFound404'))
 
 const RouteList = () => {
@@ -32,6 +33,14 @@ const RouteList = () => {
 				element={
 					<React.Suspense>
 						<Docs />
+					</React.Suspense>
+				}
+			/>
+			<Route
+				path="/explorer"
+				element={
+					<React.Suspense>
+						<Explorer />
 					</React.Suspense>
 				}
 			/>

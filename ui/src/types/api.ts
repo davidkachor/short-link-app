@@ -5,5 +5,6 @@ export interface ApiItem {
 }
 
 export interface ApiError {
+    status: number
     error: string
 }

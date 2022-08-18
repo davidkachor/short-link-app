@@ -1,14 +1,14 @@
 import React from 'react'
 import DocsText from '../../../components/DocsText/DocsText'
 
-const LinkData = () => {
+const LinkData: React.FC<{ originURL: string }> = ({ originURL }) => {
 	return (
 		<DocsText>
 			<h1>Link Data</h1>
 			<h2>Get list of link items</h2>
 			<p>Get list of links sorted by date of creation.</p>
 			<p>
-				<b>GET</b> http://localhost:5000/api/links
+				<b>GET</b> {originURL}/api/links
 			</p>
 			<p>
 				As response you will get <b>Array(Link model)</b>.
@@ -17,7 +17,7 @@ const LinkData = () => {
 			<h2>Get a particular link item by HASH</h2>
 			<p>Get a particular link model using hash.</p>
 			<p>
-				<b>GET</b> http://localhost:5000/api/links/:hash
+				<b>GET</b> {originURL}/api/links/:hash
 			</p>
 			<p>
 				As response you will get <b>Link model</b>. If it does not exist you
@@ -31,7 +31,7 @@ const LinkData = () => {
 				<b>Content-Type: application/json</b> header!
 			</p>
 			<p>
-				<b>POST</b> http://localhost:5000/api/links
+				<b>POST</b> {originURL}/api/links
 			</p>
 			<p>Body example:</p>
 			<code>
@@ -51,9 +51,9 @@ const LinkData = () => {
 				Deletes item by <b>HASH</b>.
 			</p>
 			<p>
-				<b>DELETE</b> http://localhost:5000/api/links/:hash
+				<b>DELETE</b> {originURL}/api/links/:hash
 			</p>
-			<p>As response you will get 1 (success) or 0.</p>
+			<p>As response you will get 1 (success) or error.</p>
 		</DocsText>
 	)
 }

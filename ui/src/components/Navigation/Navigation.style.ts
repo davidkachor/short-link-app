@@ -28,9 +28,8 @@ export const ValidateLink = styled(NavLink)`
 	&:hover {
 		text-decoration: underline;
 	}
-
 	&.active {
-		display: none;
+		text-decoration: underline;
 	}
 `
 
