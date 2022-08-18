@@ -3,8 +3,8 @@ import dotenv from 'dotenv'
 import cors from 'cors'
 
 import sequelize from './config/sequelize'
-import linkRouter from '@routes/link.router'
 import redirectRouter from '@routes/redirect.router'
+import apiRouter from '@routes/api.router'
 
 dotenv.config()
 
@@ -17,7 +17,7 @@ const PORT = process.env.PORT || 5000
 const server = express()
 
 server.use(cors())
-server.use('/api/links', linkRouter)
+server.use('/api', apiRouter)
 server.use('/', redirectRouter)
 
 server.listen(PORT, () => console.log(`Server works on port ${PORT}`))
