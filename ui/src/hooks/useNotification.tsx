@@ -8,7 +8,7 @@ import React, {
 import Notification from '../components/Notification/Notification'
 import NotificationType from '../types/notification-type'
 
-const useNotification = (delay = 500, type: NotificationType = 'neutral') => {
+const useNotification = (delay = 2000, type: NotificationType = 'neutral') => {
 	const [state, setState] = useState({
 		notificationIsShow: false,
 		isGoingToClose: false,

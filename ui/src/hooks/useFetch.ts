@@ -13,17 +13,13 @@ const useFetch = (url: string, config?: RequestInit) => {
 			.then(res => res.json())
 			.then(data => {
 				setIsLoading(false)
-				if (data.error) {
-					setError(data.error)
-					setData(null)
-				} else {
-					setData(data)
-					setError('')
-				}
+				setData(data)
+				setError('')
 			})
 			.catch(err => {
 				setIsLoading(false)
 				setError(String(err))
+				setData(null)
 			})
 	}, [url, config])
 

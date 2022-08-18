@@ -7,7 +7,7 @@ import useNotification from '../../hooks/useNotification'
 const Explorer = () => {
 	const [url, setUrl] = useState('')
 	const { data, error } = useFetch(url)
-	const { Notification, showNotification } = useNotification(400, 'negative')
+	const { Notification, showNotification } = useNotification(2000, 'negative')
 
 	useEffect(() => {
 		if (error) showNotification(error)
