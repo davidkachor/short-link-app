@@ -12,7 +12,7 @@ const Navigation = () => {
 		<NavigationStyled>
 			<Logo />
 			<LinkContainer>
-				<ValidateLink to="/validate" >Validate link</ValidateLink>
+				<ValidateLink to="/validate">Validate link</ValidateLink>
 				<ValidateLink to="/">Shortify link</ValidateLink>
 				<DocsLink to="/docs">docs</DocsLink>
 			</LinkContainer>
@@ -20,4 +20,4 @@ const Navigation = () => {
 	)
 }
 
-export default Navigation
+export default React.memo(Navigation)

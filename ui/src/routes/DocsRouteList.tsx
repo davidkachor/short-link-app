@@ -10,10 +10,38 @@ const LinkData = React.lazy(() => import('../pages/Docs/docs-pages/LinkData'))
 const DocsRouteList = () => {
 	return (
 		<Routes>
-			<Route path="/" element={<GetStarted />} />
-			<Route path="/models" element={<Models />} />
-			<Route path="/links" element={<LinkData />} />
-			<Route path="/*" element={<Navigate to="/docs" />} />
+			<Route
+				path="/"
+				element={
+					<React.Suspense>
+						<GetStarted />
+					</React.Suspense>
+				}
+			/>
+			<Route
+				path="/models"
+				element={
+					<React.Suspense>
+						<Models />
+					</React.Suspense>
+				}
+			/>
+			<Route
+				path="/links"
+				element={
+					<React.Suspense>
+						<LinkData />
+					</React.Suspense>
+				}
+			/>
+			<Route
+				path="/*"
+				element={
+					<React.Suspense>
+						<Navigate to="/docs" />
+					</React.Suspense>
+				}
+			/>
 		</Routes>
 	)
 }
