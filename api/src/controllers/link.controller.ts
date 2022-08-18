@@ -4,6 +4,7 @@ import shortid from 'shortid'
 import Link from '@models/Link.model'
 import isUrlValid from '../helpers/is-url-valid'
 import StatusCodeError from '../helpers/errors/StatusCodeError'
+import sendError from '../helpers/send-error'
 
 export interface TypedRequestBody<T> extends e.Request {
 	body: T
@@ -11,7 +12,7 @@ export interface TypedRequestBody<T> extends e.Request {
 
 Link.sync().then(() => console.log('Database successfully connected'))
 
-export async function createLink(
+export async function createLinkItem(
 	req: TypedRequestBody<{ url?: string }>,
 	res: e.Response
 ) {
@@ -42,9 +43,7 @@ export async function createLink(
 		const addedItem = await Link.findOne({ where: { hash } })
 		res.status(201).json(addedItem)
 	} catch (error) {
-		if (error instanceof StatusCodeError) {
-			res.status(error.statusCode).json({ error: error.message })
-		} else res.status(500).json({ error: String(error) })
+		sendError(req, res, error)
 	}
 }
 
@@ -53,7 +52,7 @@ export async function readLinkList(req: e.Request, res: e.Response) {
 		const items = await Link.findAll({})
 		res.status(200).json(items)
 	} catch (error) {
-		res.status(500).json({ error: String(error) })
+		sendError(req, res, error)
 	}
 }
 
@@ -66,8 +65,18 @@ export async function readLinkItem(req: e.Request, res: e.Response) {
 
 		res.status(200).json(item)
 	} catch (error) {
-		if (error instanceof StatusCodeError) {
-			res.status(error.statusCode).json({ error: error.message })
-		} else res.status(500).json({ error: String(error) })
+		sendError(req, res, error)
+	}
+}
+
+export async function deleteLinkItem(req: e.Request, res: e.Response) {
+	try {
+		const { hash } = req.params
+		const item = await Link.findOne({ where: { hash } })
+		if (!item) throw new StatusCodeError(404, "This link doesn't exist")
+		const answer = await Link.destroy({ where: { hash } })
+		res.status(200).json(answer)
+	} catch (error) {
+		sendError(req, res, error)
 	}
 }
