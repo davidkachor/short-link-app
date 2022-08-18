@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components'
+import { Link } from 'react-router-dom'
 
 const ButtonCss = css`
 	padding: 16px 32px;
@@ -14,6 +15,6 @@ export const Button = styled.button`
 	${ButtonCss};
 `
 
-export const ButtonLink = styled.a`
+export const ButtonLink = styled(Link)`
 	${ButtonCss};
 `

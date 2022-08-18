@@ -14,7 +14,7 @@ const Navigation = () => {
 			<LinkContainer>
 				<ValidateLink to="/validate" >Validate link</ValidateLink>
 				<ValidateLink to="/">Shortify link</ValidateLink>
-				<DocsLink href="#">docs</DocsLink>
+				<DocsLink to="/docs">docs</DocsLink>
 			</LinkContainer>
 		</NavigationStyled>
 	)

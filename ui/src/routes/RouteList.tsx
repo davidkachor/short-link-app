@@ -1,15 +1,48 @@
 import React from 'react'
 import { Routes, Route } from 'react-router-dom'
-import Home from '../pages/Home/Home'
-import ValidateLinkPage from '../pages/ValidateLinkPage/ValidateLinkPage'
-import NotFound404 from '../pages/NotFound404/NotFound404'
+
+const Home = React.lazy(() => import('../pages/Home/Home'))
+const ValidateLinkPage = React.lazy(
+	() => import('../pages/ValidateLinkPage/ValidateLinkPage')
+)
+const Docs = React.lazy(() => import('../pages/Docs/Docs'))
+const NotFound404 = React.lazy(() => import('../pages/NotFound404/NotFound404'))
 
 const RouteList = () => {
 	return (
 		<Routes>
-			<Route path="/" element={<Home />} />
-			<Route path="/validate" element={<ValidateLinkPage />} />
-			<Route path="*" element={<NotFound404 />} />
+			<Route
+				path="/"
+				element={
+					<React.Suspense>
+						<Home />
+					</React.Suspense>
+				}
+			/>
+			<Route
+				path="/validate"
+				element={
+					<React.Suspense>
+						<ValidateLinkPage />
+					</React.Suspense>
+				}
+			/>
+			<Route
+				path="/docs/*"
+				element={
+					<React.Suspense>
+						<Docs />
+					</React.Suspense>
+				}
+			/>
+			<Route
+				path="*"
+				element={
+					<React.Suspense>
+						<NotFound404 />
+					</React.Suspense>
+				}
+			/>
 		</Routes>
 	)
 }
