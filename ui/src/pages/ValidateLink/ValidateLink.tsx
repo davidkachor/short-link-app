@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { PageWrapper, HeaderStyled } from './ValidateLinkPage.style'
+import { PageWrapper, HeaderStyled } from './ValidateLink.style'
 import LinkForm, {
 	ShortFormSubmitHandler,
 } from '../../components/LinkForm/LinkForm'
@@ -9,7 +9,7 @@ import getHash from '../../helpers/get-hash'
 import trimUrl from '../../helpers/trim-url'
 import useNotification from '../../hooks/useNotification'
 
-const ValidateLinkPage = () => {
+const ValidateLink = () => {
 	const [url, setUrl] = useState('')
 	const [isSubmitted, setIsSubmitted] = useState(false)
 	const { Notification, showNotification } = useNotification(4000, 'negative')
@@ -36,4 +36,4 @@ const ValidateLinkPage = () => {
 	)
 }
 
-export default ValidateLinkPage
+export default ValidateLink

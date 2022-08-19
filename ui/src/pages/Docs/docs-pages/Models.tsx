@@ -12,7 +12,6 @@ const Models = () => {
 					<p>id: number </p>
 					<p>hash: string</p>
 					<p>original: string</p>
-					<p>short: string</p>
 					<p>createdAt: string</p>
 					<p>updatedAt: string</p>
 				</span>
@@ -24,14 +23,7 @@ const Models = () => {
 			</p>
 			<p>
 				<b>ORIGINAL</b> is an original link which being redirected to by passing
-				the <b>SHORT</b>. <b>SHORT</b> also generates automatically by API and
-				have next structure:
-			</p>
-			<p>
-				<b>localstorage:5000/:hash</b>
-			</p>
-			<p>
-				in which :hash is equivalent to Link model property <b>HASH</b>
+				the localstorage:5000/<b>HASH</b>.
 			</p>
 			<h2>Error model</h2>
 			<p>You get it when some error occurs</p>
@@ -57,7 +49,6 @@ const Models = () => {
 					<p>id: 1,</p>
 					<p>hash: &quot;iGfBXSEdU&quot;,</p>
 					<p>original: &quot;https://www.google.com&quot;,</p>
-					<p>short: &quot;localhost:5000/iGfBXSEdU&quot;,</p>
 					<p>createdAt: &quot;2022-08-18T11:24:35.152Z&quot;,</p>
 					<p>updatedAt: &quot;2022-08-18T11:24:35.152Z&quot;</p>
 				</span>
@@ -70,7 +61,6 @@ const Models = () => {
 					<p>
 						original: &quot;https://github.com/davidkachor/short-link-app&quot;,
 					</p>
-					<p>short: &quot;localhost:5000/NEKMmUIcv&quot;,</p>
 					<p>createdAt: &quot;2022-08-18T12:17:12.102Z&quot;,</p>
 					<p>updatedAt: &quot;2022-08-18T13:36:12.121Z&quot;</p>
 				</span>

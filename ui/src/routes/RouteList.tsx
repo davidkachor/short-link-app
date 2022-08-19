@@ -3,7 +3,7 @@ import { Routes, Route } from 'react-router-dom'
 
 const Home = React.lazy(() => import('../pages/Home/Home'))
 const ValidateLinkPage = React.lazy(
-	() => import('../pages/ValidateLinkPage/ValidateLinkPage')
+	() => import('../pages/ValidateLink/ValidateLink')
 )
 const Docs = React.lazy(() => import('../pages/Docs/Docs'))
 const Explorer = React.lazy(() => import('../pages/Explorer/Explorer'))

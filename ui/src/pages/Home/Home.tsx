@@ -5,7 +5,6 @@ import LinkForm, {
 } from '../../components/LinkForm/LinkForm'
 import CopyLinkButton from '../../components/CopyLinkButton/CopyLinkButton'
 import apiPostLink from '../../api/api-post-link'
-import trimUrl from '../../helpers/trim-url'
 import useNotification from '../../hooks/useNotification'
 
 const Home = () => {
@@ -18,7 +17,7 @@ const Home = () => {
 		if ('error' in data) {
 			showNotification(data.error)
 		} else {
-			if ('short' in data) setUrl(trimUrl(data.short))
+			if ('hash' in data) setUrl(`localhost:5000/${data.hash}`)
 			setIsSubmitted(true)
 		}
 	}

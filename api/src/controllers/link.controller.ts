@@ -36,8 +36,7 @@ export async function createLinkItem(
 
 		if (!origin) throw new StatusCodeError(500, 'Something went wrong')
 
-		const short = `${origin}/${hash}`
-		const newItem = { hash, original: url, short }
+		const newItem = { hash, original: url }
 		await Link.create(newItem)
 		//return added item
 		const addedItem = await Link.findOne({ where: { hash } })

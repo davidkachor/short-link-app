@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import { Form, Input, SubmitButton } from './LinkForm.style'
-import isUrlValid from '../../helpers/is-url-valid'
+// import isUrlValid from '../../helpers/is-url-valid'
 import useNotification from '../../hooks/useNotification'
+import FOR_LOCAL_HOST_IsUrlValid from "../../helpers/FOR_LOCAL_HOST-is-url-valid";
 
 export type ShortFormSubmitHandler = (value: string) => void
 
@@ -22,7 +23,7 @@ const LinkForm: React.FC<{
 
 	const submitHandler: React.FormEventHandler = event => {
 		event.preventDefault()
-		if (isUrlValid(value.trim())) {
+		if (FOR_LOCAL_HOST_IsUrlValid(value.trim())) {
 			props.onSubmit?.(value.trim())
 			setValue('')
 			setIsValid(true)
