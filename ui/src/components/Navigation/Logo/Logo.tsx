@@ -25,10 +25,18 @@ const Header = styled(Link)`
 		border-radius: 50%/16px 16px 0 0;
 		transform: rotate(-14.82deg);
 	}
+	&:after {
+		content: '®';
+		font-size: 18px;
+		font-weight: bold;
+		position: absolute;
+		left: 100%;
+		top: 8px;
+	}
 `
 
 const Logo = () => {
-	return <Header to='/'>asd.link®</Header>
+	return <Header to='/'>asd.link</Header>
 }
 
 export default Logo

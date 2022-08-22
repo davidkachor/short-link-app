@@ -6,6 +6,7 @@ import LinkForm, {
 import CopyLinkButton from '../../components/CopyLinkButton/CopyLinkButton'
 import apiPostLink from '../../api/api-post-link'
 import useNotification from '../../hooks/useNotification'
+import Background from "../../components/Background/Background";
 
 const Home = () => {
 	const [isSubmitted, setIsSubmitted] = useState(false)
@@ -29,6 +30,7 @@ const Home = () => {
 			</Header>
 			<LinkForm buttonTitle="Short me!" onSubmit={submitHandler} />
 			{isSubmitted && <CopyLinkButton text={url} />}
+			<Background/>
 			<Notification />
 		</MainWrapper>
 	)

@@ -8,6 +8,7 @@ import apiGetOriginal from '../../api/api-get-original'
 import getHash from '../../helpers/get-hash'
 import trimUrl from '../../helpers/trim-url'
 import useNotification from '../../hooks/useNotification'
+import Background from "../../components/Background/Background";
 
 const ValidateLink = () => {
 	const [url, setUrl] = useState('')
@@ -31,6 +32,7 @@ const ValidateLink = () => {
 			</HeaderStyled>
 			<LinkForm buttonTitle="Validate me!" onSubmit={submitHandler} />
 			{isSubmitted && <CopyLinkButton text={url} />}
+			<Background/>
 			<Notification />
 		</PageWrapper>
 	)
