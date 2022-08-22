@@ -12,6 +12,7 @@ export const NotificationWrapper = styled.div<{
 			: props.type === 'negative'
 			? '#ff3f3f'
 			: '#9d9d9d'};
+	text-align: center;
 	color: white;
 	font-weight: 700;
 	border-radius: 5px;
@@ -37,7 +38,7 @@ export const NotificationWrapper = styled.div<{
 		}
 	}
 
-	@media (max-width: 300px) {
-		width: calc(100% - 20px);
+	@media (max-width: 350px) {
+		width: calc(100vw - 50px);
 	}
 `
