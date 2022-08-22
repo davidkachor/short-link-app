@@ -8,4 +8,5 @@ This application allows you to create the short versions of all links. Here also
 1. Open a terminal in the root folder (default name: "short-link-app")
 2. Go to "api" folder by running `cd api` and `npm start`
 3. Open another terminal in the root folder and repeat but with "ui" folder
-4. More options of UI project bundling you can read in ui/README.md
+
+More options of UI project bundling you can read in ui/README.md
