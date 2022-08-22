@@ -1,6 +1,8 @@
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
+import randomNum from '../../helpers/random-num'
 
 export interface Size {
+	moving: [number, number]
 	width: number
 	height: number
 	left: number
@@ -17,12 +19,37 @@ export const Wrapper = styled.div`
 	overflow-y: visible;
 `
 
+export const particleAppear = keyframes`
+	0% {
+		opacity: 0;
+		transform: translate(
+			${randomNum(1) ? randomNum() : -randomNum()}%, ${
+	randomNum(1) ? randomNum() : -randomNum()
+}%
+		);
+	}
+	25% { 
+		opacity: .8;
+	}
+	50% {
+		opacity: 1;
+	}
+	75% {
+		opacity: .8;
+	}
+	100% {
+		opacity: 0;
+		transform: none;
+	}
+`
+
 export const Particle = styled.div<Size>`
 	position: absolute;
 	top: ${props => props.top}%;
 	left: ${props => props.left}%;
 	width: calc(100% - (100% - ${props => props.width}px));
 	height: ${props => props.height}px;
+	animation: ${particleAppear} linear 8s infinite;
 `
 
 export const YellowParticle = styled(Particle)`

@@ -8,69 +8,78 @@ import {
 import randomNum from '../../helpers/random-num'
 
 const Background = () => {
-	const position = randomNum.bind(null, -10, 100)
 	return (
 		<Wrapper>
 			<BlueParticle
-				top={position()}
+				moving={[randomNum(), randomNum()]}
+				top={randomNum()}
 				width={354.5}
-				left={position()}
+				left={randomNum()}
 				height={194}
 			/>
 			<YellowParticle
-				top={position()}
+				moving={[randomNum(), randomNum()]}
+				top={randomNum()}
 				width={354.5}
-				left={position()}
+				left={randomNum()}
 				height={194}
 			/>
 			<YellowParticle
-				top={position()}
+				moving={[randomNum(), randomNum()]}
+				top={randomNum()}
 				width={354.5}
-				left={position()}
+				left={randomNum()}
 				height={194}
 			/>
 
 			<BlueParticle
-				top={position()}
+				moving={[randomNum(), randomNum()]}
+				top={randomNum()}
 				width={354.5}
-				left={position()}
+				left={randomNum()}
 				height={194}
 			/>
 			<RedParticle
-				top={position()}
+				moving={[randomNum(), randomNum()]}
+				top={randomNum()}
 				width={354.5}
-				left={position()}
+				left={randomNum()}
 				height={194}
 			/>
 			<BlueParticle
-				top={position()}
+				moving={[randomNum(), randomNum()]}
+				top={randomNum()}
 				width={354.5}
-				left={position()}
+				left={randomNum()}
 				height={194}
 			/>
 			<YellowParticle
-				top={position()}
+				moving={[randomNum(), randomNum()]}
+				top={randomNum()}
 				width={354.5}
-				left={position()}
+				left={randomNum()}
 				height={194}
 			/>
 			<YellowParticle
-				top={position()}
+				moving={[randomNum(), randomNum()]}
+				top={randomNum()}
 				width={354.5}
-				left={position()}
+				left={randomNum()}
 				height={194}
 			/>
 
 			<BlueParticle
-				top={position()}
+				moving={[randomNum(), randomNum()]}
+				top={randomNum()}
 				width={354.5}
-				left={position()}
+				left={randomNum()}
 				height={194}
 			/>
 			<RedParticle
-				top={position()}
+				moving={[randomNum(), randomNum()]}
+				top={randomNum()}
 				width={354.5}
-				left={position()}
+				left={randomNum()}
 				height={194}
 			/>
 		</Wrapper>
