@@ -59,6 +59,9 @@
 		"src/public/",
 		"build.ts"
 	],
+	"engines": {
+		"node": "16.17.0"
+	},
 	"dependencies": {
 		"command-line-args": "^5.2.1",
 		"cookie-parser": "^1.4.6",
