@@ -15,8 +15,7 @@ export const Wrapper = styled.div`
 	top: 0;
 	height: 100vh;
 	z-index: -1;
-	overflow-x: hidden;
-	overflow-y: visible;
+	overflow: hidden;
 `
 
 export const particleAppear = keyframes`
