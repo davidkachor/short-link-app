@@ -1,4 +1,4 @@
 /api/node_modules/
-/api/src/db/
+
 /.idea
 package-lock.json
