@@ -1,14 +1,15 @@
 import React, { useState } from 'react'
 import { Form, Input, SubmitButton } from './RequestForm.style'
+import BASE_URL from "../../api/base-url";
 
 const RequestForm: React.FC<{ onSubmit?: (value: string) => void }> = props => {
-	const [value, setValue] = useState('http://localhost:5000/api/')
+	const [value, setValue] = useState(`${BASE_URL}/api/`)
 
 	const changeHandler: React.ChangeEventHandler<HTMLInputElement> = ({
 		target: { value },
 	}) =>
 		setValue(prev =>
-			value.includes('http://localhost:5000/api/') ? value : prev
+			value.includes(`${BASE_URL}/api/`) ? value : prev
 		)
 	return (
 		<Form

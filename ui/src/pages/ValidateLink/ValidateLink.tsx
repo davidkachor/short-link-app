@@ -12,16 +12,19 @@ import Background from "../../components/Background/Background";
 
 const ValidateLink = () => {
 	const [url, setUrl] = useState('')
-	const [isSubmitted, setIsSubmitted] = useState(false)
+	const [buttonShow, setButtonShow] = useState(false)
+	const [pending, setPending] = useState(true)
 	const { Notification, showNotification } = useNotification(4000, 'negative')
 
 	const submitHandler: ShortFormSubmitHandler = async value => {
+		setButtonShow(true)
 		const data = await apiGetOriginal(getHash(value))
 		if ('error' in data) {
 			showNotification(data.error)
+			setButtonShow(false)
 		} else {
 			if ('original' in data) setUrl(trimUrl(data.original))
-			setIsSubmitted(true)
+			setPending(false)
 		}
 	}
 
@@ -31,7 +34,7 @@ const ValidateLink = () => {
 				Validate a <span>short</span> link to get the original one 💪
 			</HeaderStyled>
 			<LinkForm buttonTitle="Validate me!" onSubmit={submitHandler} />
-			{isSubmitted && <CopyLinkButton text={url} />}
+			{buttonShow && <CopyLinkButton text={url} pending={pending} />}
 			<Background/>
 			<Notification />
 		</PageWrapper>

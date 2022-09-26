@@ -1,8 +1,9 @@
 import { ApiError, ApiItem } from '../types/api'
+import BASE_URL from "./base-url";
 
 const apiPostLink = async (url: string) => {
 	try {
-		const res = await fetch('http://localhost:5000/api/links', {
+		const res = await fetch(`${BASE_URL}/api/links`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',

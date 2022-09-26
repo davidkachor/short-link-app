@@ -7,19 +7,23 @@ import CopyLinkButton from '../../components/CopyLinkButton/CopyLinkButton'
 import apiPostLink from '../../api/api-post-link'
 import useNotification from '../../hooks/useNotification'
 import Background from "../../components/Background/Background";
+import BASE_URL from "../../api/base-url";
 
 const Home = () => {
-	const [isSubmitted, setIsSubmitted] = useState(false)
+	const [buttonShow, setButtonShow] = useState(false)
 	const [url, setUrl] = useState('')
+	const [pending, setPending] = useState(true)
 	const { Notification, showNotification } = useNotification(4000, 'negative')
 
 	const submitHandler: ShortFormSubmitHandler = async value => {
+		setButtonShow(true)
 		const data = await apiPostLink(value)
 		if ('error' in data) {
 			showNotification(data.error)
+			setButtonShow(false)
 		} else {
-			if ('hash' in data) setUrl(`localhost:5000/${data.hash}`)
-			setIsSubmitted(true)
+			if ('hash' in data) setUrl(`${BASE_URL}/${data.hash}`)
+			setPending(false)
 		}
 	}
 
@@ -29,7 +33,7 @@ const Home = () => {
 				Get the <span>short</span> link as you go 👋
 			</Header>
 			<LinkForm buttonTitle="Short me!" onSubmit={submitHandler} />
-			{isSubmitted && <CopyLinkButton text={url} />}
+			{buttonShow && <CopyLinkButton text={url} pending={pending}/>}
 			<Background/>
 			<Notification />
 		</MainWrapper>

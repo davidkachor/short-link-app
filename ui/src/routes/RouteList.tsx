@@ -1,10 +1,8 @@
 import React from 'react'
 import { Routes, Route } from 'react-router-dom'
+import Home from '../pages/Home/Home'
+import ValidateLink from "../pages/ValidateLink/ValidateLink";
 
-const Home = React.lazy(() => import('../pages/Home/Home'))
-const ValidateLinkPage = React.lazy(
-	() => import('../pages/ValidateLink/ValidateLink')
-)
 const Docs = React.lazy(() => import('../pages/Docs/Docs'))
 const Explorer = React.lazy(() => import('../pages/Explorer/Explorer'))
 const NotFound404 = React.lazy(() => import('../pages/NotFound404/NotFound404'))
@@ -24,7 +22,7 @@ const RouteList = () => {
 				path="/validate"
 				element={
 					<React.Suspense>
-						<ValidateLinkPage />
+						<ValidateLink />
 					</React.Suspense>
 				}
 			/>
